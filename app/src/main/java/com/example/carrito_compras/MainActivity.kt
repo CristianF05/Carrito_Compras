@@ -1,28 +1,27 @@
 package com.example.carrito_compras
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.widget.Button
 
-class CartActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var recyclerViewCart: RecyclerView
-    private lateinit var productAdapter: ProductAdapter
-    private lateinit var cartList: ArrayList<Product>
+    private lateinit var buttonCart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cart)
+        setContentView(R.layout.activity_main)
 
-        // Obtener los productos del carrito desde el intent
-        cartList = intent.getParcelableArrayListExtra<Product>("cart") ?: arrayListOf()
+        buttonCart = findViewById(R.id.buttonCart)
 
-        // Configurar RecyclerView para mostrar el carrito
-        recyclerViewCart = findViewById(R.id.recyclerViewCart)
-        recyclerViewCart.layoutManager = LinearLayoutManager(this)
-
-        productAdapter = ProductAdapter(cartList)
-        recyclerViewCart.adapter = productAdapter
+        buttonCart.setOnClickListener {
+            // Iniciar CartActivity y pasar la lista del carrito
+            val intent = Intent(this, CartActivity::class.java)
+            // Suponiendo que ya tienes la lista del carrito en tu MainActivity
+            val cartList = ArrayList<Product>() // Rellena esto con tus productos
+            intent.putParcelableArrayListExtra("cart", cartList)
+            startActivity(intent)
+        }
     }
 }

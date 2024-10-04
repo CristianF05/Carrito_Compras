@@ -34,6 +34,15 @@
         android:minHeight="48dp" />
 
     <Button
+        android:id="@+id/buttonCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir al carrito"
+        android:minHeight="48dp"
+        android:layout_marginBottom="10dp" />
+
+
+    <Button
         android:id="@+id/btnAddToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,3 +72,4 @@
         android:layout_weight="1" />
 
 </LinearLayout>
+
